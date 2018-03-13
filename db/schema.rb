@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313034552) do
+ActiveRecord::Schema.define(version: 20180313221925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,32 @@ ActiveRecord::Schema.define(version: 20180313034552) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["route_id"], name: "index_routes_on_route_id", unique: true
+  end
+
+  create_table "stop_times", force: :cascade do |t|
+    t.string "stop_id", null: false
+    t.string "trip_id", null: false
+    t.string "arrival_time", null: false
+    t.string "departure_time", null: false
+    t.integer "stop_sequence", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stop_id"], name: "index_stop_times_on_stop_id"
+    t.index ["trip_id"], name: "index_stop_times_on_trip_id"
+  end
+
+  create_table "stops", force: :cascade do |t|
+    t.string "stop_id", null: false
+    t.string "name", null: false
+    t.string "description"
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.string "stop_url"
+    t.integer "location_type"
+    t.integer "wheelchair_boarding"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stop_id"], name: "index_stops_on_stop_id", unique: true
   end
 
   create_table "trips", force: :cascade do |t|
@@ -49,5 +75,7 @@ ActiveRecord::Schema.define(version: 20180313034552) do
     t.index ["trip_id"], name: "index_trips_on_trip_id", unique: true
   end
 
+  add_foreign_key "stop_times", "stops", primary_key: "stop_id"
+  add_foreign_key "stop_times", "trips", primary_key: "trip_id"
   add_foreign_key "trips", "routes", primary_key: "route_id"
 end
