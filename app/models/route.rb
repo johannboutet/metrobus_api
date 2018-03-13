@@ -23,4 +23,10 @@
 #++
 
 class Route < ApplicationRecord
+  with_options presence: true do
+    validates :route_id, uniqueness: true
+    validates :route_type
+  end
+  validates :route_short_name, presence: true, if: ->(r) { r.route_long_name.blank? }
+  validates :route_long_name, presence: true, if: ->(r) { r.route_short_name.blank? }
 end

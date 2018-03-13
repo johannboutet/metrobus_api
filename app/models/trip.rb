@@ -31,4 +31,8 @@
 #++
 
 class Trip < ApplicationRecord
+  with_options presence: true do
+    validates :trip_id, uniqueness: true
+    validates :route_id, :service_id
+  end
 end

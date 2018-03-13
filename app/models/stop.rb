@@ -22,4 +22,8 @@
 #++
 
 class Stop < ApplicationRecord
+  with_options presence: true do
+    validates :stop_id, uniqueness: true
+    validates :name, :latitude, :longitude
+  end
 end

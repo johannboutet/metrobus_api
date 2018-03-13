@@ -25,4 +25,5 @@
 #++
 
 class StopTime < ApplicationRecord
+  validates :stop_id, :trip_id, :arrival_time, :departure_time, presence: true
 end
