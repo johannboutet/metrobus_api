@@ -2,8 +2,7 @@
 #
 # Table name: routes
 #
-# *id*::               <tt>integer, not null, primary key</tt>
-# *route_id*::         <tt>string, not null</tt>
+# *id*::               <tt>string, not null</tt>
 # *agency_id*::        <tt>string</tt>
 # *route_short_name*:: <tt>string, default(""), not null</tt>
 # *route_long_name*::  <tt>string, default(""), not null</tt>
@@ -17,7 +16,7 @@
 #
 # Indexes
 #
-#  index_routes_on_route_id  (route_id) UNIQUE
+#  index_routes_on_id  (id) UNIQUE
 #--
 # == Schema Information End
 #++

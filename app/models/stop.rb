@@ -2,8 +2,7 @@
 #
 # Table name: stops
 #
-# *id*::                  <tt>integer, not null, primary key</tt>
-# *stop_id*::             <tt>string, not null</tt>
+# *id*::                  <tt>string, not null</tt>
 # *name*::                <tt>string, not null</tt>
 # *description*::         <tt>string</tt>
 # *latitude*::            <tt>float, not null</tt>
@@ -16,14 +15,19 @@
 #
 # Indexes
 #
-#  index_stops_on_stop_id  (stop_id) UNIQUE
+#  index_stops_on_id  (id) UNIQUE
 #--
 # == Schema Information End
 #++
 
 class Stop < ApplicationRecord
+  self.primary_key = :id
+
+  has_many :stop_times, dependent: :destroy, inverse_of: :stop
+  has_many :trips, through: :stop_times, inverse_of: :stops
+
   with_options presence: true do
-    validates :stop_id, uniqueness: true
+    validates :id, uniqueness: true
     validates :name, :latitude, :longitude
   end
 end

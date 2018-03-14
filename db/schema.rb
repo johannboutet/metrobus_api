@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 20180313221925) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "routes", force: :cascade do |t|
-    t.string "route_id", null: false
+  create_table "routes", id: false, force: :cascade do |t|
+    t.string "id", null: false
     t.string "agency_id"
     t.string "route_short_name", default: "", null: false
     t.string "route_long_name", default: "", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20180313221925) do
     t.string "route_text_color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["route_id"], name: "index_routes_on_route_id", unique: true
+    t.index ["id"], name: "index_routes_on_id", unique: true
   end
 
   create_table "stop_times", force: :cascade do |t|
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20180313221925) do
     t.index ["trip_id"], name: "index_stop_times_on_trip_id"
   end
 
-  create_table "stops", force: :cascade do |t|
-    t.string "stop_id", null: false
+  create_table "stops", id: false, force: :cascade do |t|
+    t.string "id", null: false
     t.string "name", null: false
     t.string "description"
     t.float "latitude", null: false
@@ -53,11 +53,11 @@ ActiveRecord::Schema.define(version: 20180313221925) do
     t.integer "wheelchair_boarding"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["stop_id"], name: "index_stops_on_stop_id", unique: true
+    t.index ["id"], name: "index_stops_on_id", unique: true
   end
 
-  create_table "trips", force: :cascade do |t|
-    t.string "trip_id", null: false
+  create_table "trips", id: false, force: :cascade do |t|
+    t.string "id", null: false
     t.string "route_id", null: false
     t.string "service_id", null: false
     t.string "trip_headsign"
@@ -70,12 +70,12 @@ ActiveRecord::Schema.define(version: 20180313221925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["direction_id"], name: "index_trips_on_direction_id"
+    t.index ["id"], name: "index_trips_on_id", unique: true
     t.index ["route_id"], name: "index_trips_on_route_id"
     t.index ["service_id"], name: "index_trips_on_service_id"
-    t.index ["trip_id"], name: "index_trips_on_trip_id", unique: true
   end
 
-  add_foreign_key "stop_times", "stops", primary_key: "stop_id"
-  add_foreign_key "stop_times", "trips", primary_key: "trip_id"
-  add_foreign_key "trips", "routes", primary_key: "route_id"
+  add_foreign_key "stop_times", "stops"
+  add_foreign_key "stop_times", "trips"
+  add_foreign_key "trips", "routes"
 end

@@ -1,7 +1,7 @@
 class CreateStops < ActiveRecord::Migration[5.1]
   def change
-    create_table :stops do |t|
-      t.string :stop_id, index: { unique: true }, null: false
+    create_table :stops, id: false do |t|
+      t.string :id, index: { unique: true }, null: false
       t.string :name, null: false
       t.string :description
       t.float :latitude, null: false

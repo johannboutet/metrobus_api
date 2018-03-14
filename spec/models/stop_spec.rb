@@ -2,8 +2,7 @@
 #
 # Table name: stops
 #
-# *id*::                  <tt>integer, not null, primary key</tt>
-# *stop_id*::             <tt>string, not null</tt>
+# *id*::                  <tt>string, not null</tt>
 # *name*::                <tt>string, not null</tt>
 # *description*::         <tt>string</tt>
 # *latitude*::            <tt>float, not null</tt>
@@ -16,7 +15,7 @@
 #
 # Indexes
 #
-#  index_stops_on_stop_id  (stop_id) UNIQUE
+#  index_stops_on_id  (id) UNIQUE
 #--
 # == Schema Information End
 #++

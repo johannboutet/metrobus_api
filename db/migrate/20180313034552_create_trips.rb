@@ -1,7 +1,7 @@
 class CreateTrips < ActiveRecord::Migration[5.1]
   def change
-    create_table :trips do |t|
-      t.string :trip_id, index: { unique: true }, null: false
+    create_table :trips, id: false do |t|
+      t.string :id, index: { unique: true }, null: false
       t.string :route_id, index: true, null: false
       t.string :service_id, index: true, null: false
       t.string :trip_headsign
@@ -15,6 +15,6 @@ class CreateTrips < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_foreign_key :trips, :routes, primary_key: :route_id
+    add_foreign_key :trips, :routes
   end
 end

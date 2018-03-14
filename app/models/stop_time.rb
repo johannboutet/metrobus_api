@@ -18,12 +18,17 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (stop_id => stops.stop_id)
-#  fk_rails_...  (trip_id => trips.trip_id)
+#  fk_rails_...  (stop_id => stops.id)
+#  fk_rails_...  (trip_id => trips.id)
 #--
 # == Schema Information End
 #++
 
 class StopTime < ApplicationRecord
+  self.primary_key = :id
+
+  belongs_to :stop, inverse_of: :stop_times
+  belongs_to :trip, inverse_of: :stop_times
+
   validates :stop_id, :trip_id, :arrival_time, :departure_time, presence: true
 end

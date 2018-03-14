@@ -10,7 +10,7 @@ class CreateStopTimes < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_foreign_key :stop_times, :stops, primary_key: :stop_id
-    add_foreign_key :stop_times, :trips, primary_key: :trip_id
+    add_foreign_key :stop_times, :stops
+    add_foreign_key :stop_times, :trips
   end
 end
