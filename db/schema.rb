@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20180313221925) do
   create_table "routes", id: false, force: :cascade do |t|
     t.string "id", null: false
     t.string "agency_id"
-    t.string "route_short_name", default: "", null: false
-    t.string "route_long_name", default: "", null: false
+    t.string "route_short_name"
+    t.string "route_long_name"
     t.text "route_desc"
     t.integer "route_type", null: false
     t.string "route_url"
@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 20180313221925) do
 
   create_table "stops", id: false, force: :cascade do |t|
     t.string "id", null: false
-    t.string "name", null: false
-    t.string "description"
-    t.float "latitude", null: false
-    t.float "longitude", null: false
+    t.string "stop_name", null: false
+    t.string "stop_desc"
+    t.float "stop_lat", null: false
+    t.float "stop_lon", null: false
     t.string "stop_url"
     t.integer "location_type"
     t.integer "wheelchair_boarding"

@@ -2,10 +2,10 @@
 #
 # Table name: routes
 #
-# *id*::               <tt>string, not null</tt>
+# *id*::               <tt>string, not null, primary key</tt>
 # *agency_id*::        <tt>string</tt>
-# *route_short_name*:: <tt>string, default(""), not null</tt>
-# *route_long_name*::  <tt>string, default(""), not null</tt>
+# *route_short_name*:: <tt>string</tt>
+# *route_long_name*::  <tt>string</tt>
 # *route_desc*::       <tt>text</tt>
 # *route_type*::       <tt>integer, not null</tt>
 # *route_url*::        <tt>string</tt>

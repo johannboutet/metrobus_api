@@ -2,7 +2,7 @@
 #
 # Table name: trips
 #
-# *id*::                    <tt>string, not null</tt>
+# *id*::                    <tt>string, not null, primary key</tt>
 # *route_id*::              <tt>string, not null</tt>
 # *service_id*::            <tt>string, not null</tt>
 # *trip_headsign*::         <tt>string</tt>

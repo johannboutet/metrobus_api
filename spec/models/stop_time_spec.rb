@@ -18,8 +18,8 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (stop_id => stops.stop_id)
-#  fk_rails_...  (trip_id => trips.trip_id)
+#  fk_rails_...  (stop_id => stops.id)
+#  fk_rails_...  (trip_id => trips.id)
 #--
 # == Schema Information End
 #++

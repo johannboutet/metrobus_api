@@ -2,11 +2,11 @@
 #
 # Table name: stops
 #
-# *id*::                  <tt>string, not null</tt>
-# *name*::                <tt>string, not null</tt>
-# *description*::         <tt>string</tt>
-# *latitude*::            <tt>float, not null</tt>
-# *longitude*::           <tt>float, not null</tt>
+# *id*::                  <tt>string, not null, primary key</tt>
+# *stop_name*::           <tt>string, not null</tt>
+# *stop_desc*::           <tt>string</tt>
+# *stop_lat*::            <tt>float, not null</tt>
+# *stop_lon*::            <tt>float, not null</tt>
 # *stop_url*::            <tt>string</tt>
 # *location_type*::       <tt>integer</tt>
 # *wheelchair_boarding*:: <tt>integer</tt>
