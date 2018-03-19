@@ -25,6 +25,7 @@ class Stop < ApplicationRecord
 
   has_many :stop_times, dependent: :destroy, inverse_of: :stop
   has_many :trips, through: :stop_times, inverse_of: :stops
+  has_many :routes, -> { distinct }, through: :trips
 
   with_options presence: true do
     validates :id, uniqueness: true
