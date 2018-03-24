@@ -37,7 +37,18 @@ namespace :gtfs do
   desc 'Export GTFS data in TypeScript file'
   task export: :environment do
     File.open(Rails.root.join('gtfs', 'ts', 'stops.ts'), 'w') do |file|
-      file.puts('export const stops = [')
+      interface = %q(export interface RoutesByStop {
+  id: string;
+  name: string;
+  desc: string;
+  latitude: number;
+  longitude: number;
+  routes: { id: string; shortName: string; longName: string; desc: string; }[]
+})
+
+      file.puts(interface)
+      file.puts('')
+      file.puts('export const routesByStop: RoutesByStop[] = [')
 
       progress = ProgressBar.create(title: 'Stops', total: Stop.count, format: '%t (%c/%C): |%w%i|')
 
@@ -46,8 +57,8 @@ namespace :gtfs do
         file.puts("    id: '#{stop.id}',")
         file.puts("    name: \"#{stop.stop_name}\",")
         file.puts("    desc: \"#{stop.stop_desc}\",")
-        file.puts("    lat: #{stop.stop_lat},")
-        file.puts("    lon: #{stop.stop_lon},")
+        file.puts("    latitude: #{stop.stop_lat},")
+        file.puts("    longitude: #{stop.stop_lon},")
         file.puts('    routes: [')
 
         stop.routes.each do |route|
